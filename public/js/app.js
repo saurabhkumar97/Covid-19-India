@@ -14,7 +14,7 @@ fetch('/raw-data').then((response) => {
             a1.textContent = data.body.statewise[0].active;
             r1.textContent = data.body.statewise[0].recovered;
             d1.textContent = data.body.statewise[0].deaths;
-            for(i=1;i<30;i++){
+            for(i=1;i<40;i++){
 
                 var table = document.getElementById("covidTable");
                 var row = table.insertRow(i);

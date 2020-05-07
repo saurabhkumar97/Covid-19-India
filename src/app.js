@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 
 const data = require('./utils/data')
+const contacts = require('./utils/contacts')
 
 const app = express()
 
@@ -16,7 +17,7 @@ hbs.registerPartials(partialPath)
 
 app.use(express.static(publicDirectoryPath))
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 
 app.get('', (req, res) => {
@@ -26,8 +27,11 @@ app.get('', (req, res) => {
     })
 })
 
-app.get('/support', (req,res) => {
-    res.render('Support', {title: 'Hi'})
+app.get('/contact', (req,res) => {
+    res.render('contact', {
+        title: 'SUPPORT',
+        name: 'Saurabh Kumar'
+    })
 })
 
 app.get('/raw-data', (req, res) => {
@@ -39,6 +43,14 @@ app.get('/raw-data', (req, res) => {
     })
 })
 
+app.get('/contact-detail', (req,res) => {
+    contacts((error, response) => {
+        if(error){
+            return res.send({error,})
+        }
+        res.send(response)
+    })
+})
 
 app.listen(port, () => {
     console.log('server is up on port ' +port)
