@@ -16,7 +16,7 @@ hbs.registerPartials(partialPath)
 
 app.use(express.static(publicDirectoryPath))
 
-const port = process.env.port
+const port = process.env.PORT
 
 
 app.get('', (req, res) => {
